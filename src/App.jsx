@@ -2,7 +2,7 @@ import React, { useState, useMemo, useCallback, useRef, useEffect } from "react"
 import {
   ShoppingBag, X, Plus, Minus, Instagram, Send, Sparkles, Check, ChevronRight,
   Crown, Menu, Truck, Gift, ShieldCheck, Quote, Wand2, ArrowRight, ArrowLeft, Percent,
-  Snowflake, Sun, Cookie, Wind, Flame, Heart
+  Snowflake, Sun, Cookie, Wind, Flame, Heart, Star
 } from "lucide-react";
 
 /* ---------------------------------------------------------
@@ -39,6 +39,9 @@ const TESTIMONIALS = [
 ];
 
 const IG_URL = "https://instagram.com/elan.fragrances";
+// Leer lassen (null) = Flakon-Illustration wird gezeigt.
+// Pfad eintragen, z.B. "/images/hero.jpg" = dein eigenes Foto wird gezeigt.
+const HERO_IMAGE = "/images/hero.jpg";
 const IG_DM_URL = "https://ig.me/m/elan.fragrances";
 
 const CATEGORIES = [
@@ -52,7 +55,7 @@ const CATEGORIES = [
 
 const TICKER_ITEMS = [
   "VERSAND IN 2–4 WERKTAGEN",
-  "AB 3 FLASCHEN KOSTENLOS + 10% RABATT",
+  "AB 3 FLASCHEN GRATIS VERSAND + 10% RABATT",
   "SICHER BEZAHLEN: PAYPAL ODER ÜBERWEISUNG",
   "EXTRAIT DE PARFUM · 30% ÖLANTEIL",
 ];
@@ -71,10 +74,12 @@ const openExternal = (url) => {
   }
 };
 
-function Stars({ n }) {
+function Stars({ n = 5, size = 22 }) {
   return (
-    <div className="flex gap-0.5" style={{ color: C.gold }}>
-      {Array.from({ length: n }).map((_, i) => <Sparkles key={i} size={13} />)}
+    <div className="flex gap-1" style={{ color: C.gold }}>
+      {Array.from({ length: 5 }).map((_, i) => (
+        <Star key={i} size={size} fill={i < n ? C.gold : "none"} strokeWidth={1.5} />
+      ))}
     </div>
   );
 }
@@ -436,7 +441,15 @@ export default function ElanSite() {
       {/* Hero */}
       <section id="top" className="relative flex flex-col items-center text-center px-6 pt-16 pb-12 md:pt-24 overflow-hidden">
         <div className="mb-2 text-xs tracked uppercase" style={{ color: C.gold }}>Premium Duftzwillinge</div>
-        <Bottle size={1.5} glow />
+        {HERO_IMAGE ? (
+          <img
+            src={HERO_IMAGE}
+            alt="ÉLAN Kollektion"
+            style={{ width: "100%", maxWidth: 420, aspectRatio: "4/5", objectFit: "cover" }}
+          />
+        ) : (
+          <Bottle size={1.5} glow />
+        )}
         <h1 className="font-display mt-8 text-5xl md:text-7xl" style={{ lineHeight: 1.05 }}>Ikonische Düfte.<br />Neu interpretiert.</h1>
         <p className="mt-6 max-w-md text-sm md:text-base" style={{ color: C.muted }}>
           Extrait de Parfum mit 30% Ölanteil. Komponiert aus erlesenen Rohstoffen aus Frankreich &amp; England.
@@ -475,7 +488,7 @@ export default function ElanSite() {
       <section className="quote-strip px-6 md:px-12 pb-10 max-w-5xl mx-auto">
         {TESTIMONIALS.slice(0, 3).map((t, i) => (
           <div key={i} className="flex items-center gap-2 shrink-0 text-xs" style={{ color: C.muted }}>
-            <Stars n={5} /> <span>„{t.text.split(".")[0]}." — {t.name}</span>
+            <Stars n={5} size={12} /> <span>„{t.text.split(".")[0]}." — {t.name}</span>
           </div>
         ))}
       </section>
@@ -483,7 +496,7 @@ export default function ElanSite() {
       {/* floating trust cards */}
       <section className="px-6 md:px-12 pb-16 max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6">
         <FloatCard icon={<Truck size={20} />} title="Versand in 2–4 Werktagen" sub="Schneller, diskreter Versand" />
-        <FloatCard icon={<Gift size={20} />} title="Ab 3 Flaschen kostenlos + 10%" sub="Automatischer Mengenrabatt" />
+        <FloatCard icon={<Gift size={20} />} title="Ab 3 Flaschen Gratis Versand + 10% Rabatt" sub="Automatischer Mengenrabatt" />
         <FloatCard icon={<ShieldCheck size={20} />} title="Sicher bezahlen" sub="PayPal oder Banküberweisung" />
       </section>
 
@@ -579,15 +592,16 @@ export default function ElanSite() {
       </section>
 
       {/* Testimonials */}
-      <section id="stimmen" className="px-6 md:px-12 py-20 max-w-5xl mx-auto" style={{ borderTop: `1px solid ${C.line}` }}>
+      <section id="stimmen" className="px-6 md:px-12 py-20 max-w-6xl mx-auto" style={{ borderTop: `1px solid ${C.line}` }}>
         <div className="text-xs tracked uppercase mb-2 text-center" style={{ color: C.gold }}>Kundenstimmen</div>
         <h2 className="font-display text-4xl text-center mb-12">Was unsere Kund:innen sagen</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {TESTIMONIALS.map((t, i) => (
-            <div key={i} className="p-6" style={{ background: C.surface, border: `1px solid ${C.line}` }}>
-              <Quote size={18} style={{ color: C.gold }} />
-              <p className="text-sm mt-3" style={{ color: C.text }}>{t.text}</p>
-              <div className="flex items-center justify-between mt-4"><span className="text-xs font-medium">{t.name}</span><Stars n={t.rating} /></div>
+            <div key={i} className="flex flex-col items-center text-center p-6" style={{ background: C.surface, border: `1px solid ${C.line}` }}>
+              <Stars n={t.rating} size={24} />
+              <Quote size={22} className="mt-4" style={{ color: C.gold }} />
+              <p className="text-base mt-3 leading-relaxed" style={{ color: C.text }}>{t.text}</p>
+              <span className="text-sm font-medium mt-5" style={{ color: C.muted }}>{t.name}</span>
             </div>
           ))}
         </div>
@@ -600,7 +614,7 @@ export default function ElanSite() {
         <p className="text-sm" style={{ color: C.muted }}>
           Wähle Duft &amp; Größe, öffne den Warenkorb, trage deine Adresse ein und sende die Bestellung
           per Instagram-DM. Bezahlt wird per PayPal oder Überweisung. Versand in 2–4 Werktagen — ab 3
-          Flaschen automatisch kostenlos plus 10% Rabatt.
+          Flaschen Gratis Versand + 10% Rabatt.
         </p>
       </section>
 
@@ -676,7 +690,7 @@ export default function ElanSite() {
                   </div>
                 )}
                 <div className="flex justify-between text-sm mb-1" style={{ color: C.muted }}><span>Versand</span><span>{shipping === 0 ? "kostenlos" : fmt(shipping)}</span></div>
-                {count > 0 && count < 3 && <div className="text-[11px] mb-3" style={{ color: C.gold }}>Noch {3 - count} Flasche(n) für kostenlosen Versand + 10% Rabatt!</div>}
+                {count > 0 && count < 3 && <div className="text-[11px] mb-3" style={{ color: C.gold }}>Noch {3 - count} Flasche(n) für Gratis Versand + 10% Rabatt!</div>}
                 <div className="flex justify-between font-display text-2xl mb-5"><span>Gesamt</span><span style={{ color: C.gold }}>{fmt(grandTotal)}</span></div>
 
                 <div className="text-xs tracked uppercase mb-3" style={{ color: C.gold }}>Lieferadresse</div>
