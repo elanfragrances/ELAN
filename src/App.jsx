@@ -252,6 +252,7 @@ export default function ElanSite() {
   const [cart, setCart] = useState({}); // key: `${id}_${size}` -> qty
   const [cartOpen, setCartOpen] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [toast, setToast] = useState(null);
   const [mobileNav, setMobileNav] = useState(false);
   const [quizOpen, setQuizOpen] = useState(false);
   const [quizResult, setQuizResult] = useState(null);
@@ -285,7 +286,10 @@ export default function ElanSite() {
   const addToCart = useCallback((id, size) => {
     const key = `${id}_${size}`;
     setCart((c) => ({ ...c, [key]: (c[key] || 0) + 1 }));
-    setCartOpen(true);
+    const p = PRODUCTS.find((pr) => pr.id === id);
+    setToast(`✓ ÉLAN ${p?.code} (${size}ml) hinzugefügt`);
+    clearTimeout(window.__elanToastTimer);
+    window.__elanToastTimer = setTimeout(() => setToast(null), 2200);
   }, []);
   const changeQty = useCallback((key, delta) => {
     setCart((c) => {
@@ -695,6 +699,17 @@ export default function ElanSite() {
           </div>
         </div>
       )}
+
+      {/* Toast — kurze Bestätigung statt Warenkorb automatisch zu öffnen */}
+      {toast && (
+        <div
+          className="fixed bottom-6 left-1/2 z-[60] px-5 py-3 text-xs tracked uppercase"
+          style={{ transform: "translateX(-50%)", background: C.ink, color: C.goldHi, boxShadow: "0 10px 30px -10px rgba(36,24,9,0.5)" }}
+        >
+          {toast}
+        </div>
+      )}
     </div>
   );
 }
+
