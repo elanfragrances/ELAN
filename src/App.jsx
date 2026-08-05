@@ -4,6 +4,7 @@ import {
   Crown, Menu, Truck, Gift, ShieldCheck, Quote, Wand2, ArrowRight, ArrowLeft, Percent,
   Snowflake, Sun, Cookie, Wind, Flame, Heart, Star
 } from "lucide-react";
+import { Analytics } from '@vercel/analytics/react';
 
 /* ---------------------------------------------------------
    ÉLAN — warm beige luxury tokens
@@ -727,6 +728,7 @@ export default function ElanSite() {
           {toast}
         </div>
       )}
+      <Analytics />
     </div>
   );
 }
