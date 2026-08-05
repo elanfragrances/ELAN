@@ -144,7 +144,7 @@ function ProductVisual({ p, size = 1 }) {
 function ProductCard({ p, onAdd, ribbon }) {
   const [size, setSize] = useState(50);
   return (
-    <div className="card relative flex flex-col items-center text-center p-3 sm:p-5" style={{ background: C.surface, border: `1px solid ${C.line}` }}>
+    <div className="card relative flex flex-col h-full items-center text-center p-3 sm:p-5" style={{ background: C.surface, border: `1px solid ${C.line}` }}>
       {ribbon && (
         <div className="absolute top-2 left-2 flex items-center gap-1 text-[8px] tracked uppercase px-1.5 py-0.5" style={{ background: C.ink, color: C.goldHi }}>
           <Crown size={8} /> Bestseller
@@ -162,11 +162,15 @@ function ProductCard({ p, onAdd, ribbon }) {
       </div>
       <div className="text-[11px] mt-2" style={{ color: C.text }}>{p.note}</div>
       <div className="text-[9px] mt-0.5" style={{ color: C.muted }}>{p.accord}</div>
-      <SizePicker value={size} onChange={setSize} />
-      <div className="font-display text-base mt-1.5" style={{ color: C.ink }}>{fmt(PRICE[size])}</div>
-      <button onClick={() => onAdd(p.id, size)} className="btn-gold mt-2 w-full py-1.5 text-[9px] tracked uppercase flex items-center justify-center gap-1">
-        <Plus size={10} /> In den Warenkorb
-      </button>
+
+      {/* Preis, Größe & Button sitzen bei jeder Karte auf gleicher Höhe unten */}
+      <div className="mt-auto w-full pt-2">
+        <SizePicker value={size} onChange={setSize} />
+        <div className="font-display text-base mt-1.5" style={{ color: C.ink }}>{fmt(PRICE[size])}</div>
+        <button onClick={() => onAdd(p.id, size)} className="btn-gold mt-2 w-full py-1.5 text-[9px] tracked uppercase flex items-center justify-center gap-1">
+          <Plus size={10} /> In den Warenkorb
+        </button>
+      </div>
     </div>
   );
 }
@@ -438,7 +442,7 @@ export default function ElanSite() {
           Extrait de Parfum mit 30% Ölanteil. Komponiert aus erlesenen Rohstoffen aus Frankreich &amp; England.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 mt-9">
-          <button onClick={() => scrollTo("bestseller")} className="btn-gold px-8 py-3 text-sm tracked uppercase inline-flex items-center justify-center gap-2">
+          <button onClick={() => scrollTo("shop")} className="btn-gold px-8 py-3 text-sm tracked uppercase inline-flex items-center justify-center gap-2">
             Kollektion entdecken <ChevronRight size={15} />
           </button>
           <button onClick={() => { setQuizOpen(true); setQuizResult(null); }} className="px-8 py-3 text-sm tracked uppercase inline-flex items-center justify-center gap-2 btn-ghost" style={{ border: `1px solid ${C.gold}`, color: C.ink, background: "none" }}>
@@ -712,4 +716,3 @@ export default function ElanSite() {
     </div>
   );
 }
-
