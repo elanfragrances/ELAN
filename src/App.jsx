@@ -181,14 +181,17 @@ function ProductCard({ p, onAdd, ribbon }) {
 }
 
 function CategoryTile({ cat, onClick }) {
-  const Icon = cat.icon;
   return (
     <button
       onClick={onClick}
       className="category-tile relative aspect-square overflow-hidden flex items-end p-4 sm:p-6 text-left"
-      style={{ background: `linear-gradient(135deg, ${cat.from}, ${cat.to})` }}
     >
-      <Icon size={72} className="category-icon" style={{ position: "absolute", top: 14, right: 10, color: "#FFFFFF", opacity: 0.16 }} />
+      <img
+        src={cat.image}
+        alt={cat.label}
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+      />
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(36,24,9,0) 40%, rgba(36,24,9,0.75) 100%)" }} />
       <span className="font-display text-xl sm:text-3xl text-white relative z-10" style={{ lineHeight: 1.1 }}>{cat.label}</span>
     </button>
   );
