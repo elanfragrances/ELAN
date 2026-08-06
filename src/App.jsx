@@ -643,21 +643,46 @@ export default function ElanSite() {
         )}
       </section>
 
-      {/* Testimonials */}
-      <section id="stimmen" className="px-6 md:px-12 py-20 max-w-6xl mx-auto" style={{ borderTop: `1px solid ${C.line}` }}>
-        <div className="text-xs tracked uppercase mb-2 text-center" style={{ color: C.gold }}>Kundenstimmen</div>
-        <h2 className="font-display text-4xl text-center mb-12">Was unsere Kund:innen sagen</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {TESTIMONIALS.map((t, i) => (
-            <div key={i} className="flex flex-col items-center text-center p-6" style={{ background: C.surface, border: `1px solid ${C.line}` }}>
-              <Stars n={t.rating} size={24} />
-              <Quote size={22} className="mt-4" style={{ color: C.gold }} />
-              <p className="text-base mt-3 leading-relaxed" style={{ color: C.text }}>{t.text}</p>
-              <span className="text-sm font-medium mt-5" style={{ color: C.muted }}>{t.name}</span>
-            </div>
-          ))}
+{/* Kundenfeedback */}
+<section id="stimmen" className="px-6 md:px-12 py-20 max-w-6xl mx-auto" style={{ borderTop: `1px solid ${C.line}` }}>
+  <div className="text-xs tracked uppercase mb-2 text-center" style={{ color: C.gold }}>Kundenfeedback</div>
+  <h2 className="font-display text-4xl text-center mb-12">Das sagen unsere Kunden</h2>
+  
+  {/* CAROUSEL */}
+  <div className="overflow-x-auto pb-6" style={{ scrollBehavior: "smooth", WebkitOverflowScrolling: "touch" }}>
+    <div className="flex gap-8 min-w-max px-6">
+      {TESTIMONIALS.map((t, i) => (
+        <div key={i} className="flex-shrink-0 w-72 text-center">
+          {/* KUNDENBILDER */}
+          <img
+            src={`/images/customer-${i + 1}.jpg`}
+            alt={t.name}
+            className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4"
+            style={{ borderColor: C.gold }}
+          />
+
+          {/* STARS */}
+          <div className="flex justify-center mb-3">
+            {[...Array(t.rating)].map((_, j) => (
+              <Star key={j} size={16} fill={C.gold} stroke={C.gold} strokeWidth={1} />
+            ))}
+          </div>
+
+          {/* TEXT */}
+          <p className="text-sm leading-relaxed mb-4" style={{ color: C.muted }}>
+            "{t.text}"
+          </p>
+
+          {/* NAME */}
+          <p className="font-medium text-sm" style={{ color: C.ink }}>
+            {t.name}
+          </p>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* FAQ */}
       <section id="faq" className="px-6 md:px-12 py-16 max-w-3xl mx-auto text-center" style={{ borderTop: `1px solid ${C.line}` }}>
