@@ -444,15 +444,27 @@ export default function ElanSite() {
       {/* Hero */}
       <section id="top" className="relative flex flex-col items-center text-center px-6 pt-16 pb-12 md:pt-24 overflow-hidden">
         <div className="mb-2 text-xs tracked uppercase" style={{ color: C.gold }}>Premium Duftzwillinge</div>
-        {HERO_IMAGE ? (
-          <img
-            src={HERO_IMAGE}
-            alt="ÉLAN Kollektion"
-            style={{ width: "100%", maxWidth: 420, aspectRatio: "4/5", objectFit: "cover" }}
-          />
-        ) : (
-          <Bottle size={1.5} glow />
-        )}
+   <div className="flex justify-center gap-4 w-full">
+  {HERO_IMAGES.map((src, i) => {
+    const isVideo = src.endsWith(".mp4");
+    const className = i === 1 ? "block" : "hidden md:block";
+    const style = { width: "100%", maxWidth: 340, aspectRatio: "4/5", objectFit: "cover" };
+    return isVideo ? (
+      <video
+        key={src}
+        src={src}
+        autoPlay
+        muted
+        loop
+        playsInline
+        className={className}
+        style={style}
+      />
+    ) : (
+      <img key={src} src={src} alt="ÉLAN Kollektion" className={className} style={style} />
+    );
+  })}
+</div>
         <h1 className="font-display mt-8 text-5xl md:text-7xl" style={{ lineHeight: 1.05 }}>Ikonische Düfte.<br />Neu interpretiert.</h1>
         <p className="mt-6 max-w-md text-sm md:text-base" style={{ color: C.muted }}>
           Extrait de Parfum mit 30% Ölanteil. Komponiert aus erlesenen Rohstoffen aus Frankreich &amp; England.
