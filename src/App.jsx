@@ -450,21 +450,19 @@ export default function ElanSite() {
     const className = i === 1 ? "block" : "hidden md:block";
     const style = { width: "100%", maxWidth: 340, aspectRatio: "4/5", objectFit: "cover" };
     return isVideo ? (
-      <video
-  autoPlay={true}
-  muted={true}
-  loop={true}
-  playsInline={true}
-  controls={false}
-  className="w-full rounded-lg object-cover"
-  style={{ height: 580, background: "#000", display: "block" }}
-  onCanPlayThrough={(e) => {
-    e.currentTarget.play().catch(() => {});
-  }}
+<video
+  autoPlay
+  muted
+  loop
+  playsInline
+  className="w-full rounded-lg object-cover h-80 md:h-[580px]"
+  style={{ background: "#000" }}
+  onCanPlayThrough={(e) => e.currentTarget.play().catch(() => {})}
 >
   <source src="/images/hero-video.mp4" type="video/mp4" />
   Dein Browser unterstützt Videos nicht.
 </video>
+
 
     ) : (
       <img key={src} src={src} alt="ÉLAN Kollektion" className={className} style={style} />
