@@ -45,12 +45,12 @@ const HERO_IMAGE = "/images/hero.jpg";
 const IG_DM_URL = "https://ig.me/m/elan.fragrances";
 
 const CATEGORIES = [
-  { label: "Winter Düfte",     type: "occasion", value: "Winter",           image: "/images/duftwelt-winter.jpg" },
-  { label: "Sommer Düfte",     type: "occasion", value: "Sommer",            image: "/images/duftwelt-sommer.jpg" },
-  { label: "Süße Düfte",       type: "family",   value: "Honig & Gourmand",  image: "/images/duftwelt-suesse.jpg" },
-  { label: "Frische Düfte",    type: "family",   value: "Frisch & Zitrus",   image: "/images/duftwelt-frische.jpg" },
-  { label: "Oud & Leder",      type: "family",   value: "Leder",             image: "/images/duftwelt-oud-leder.jpg" },
-  { label: "Date Night Düfte", type: "occasion", value: "Date Night",        image: "/images/duftwelt-datenight.jpg" },
+  { label: "Winter Düfte",     type: "occasion", value: "Winter",           image: "/duftwelt-winter.jpg" },
+  { label: "Sommer Düfte",     type: "occasion", value: "Sommer",            image: "/duftwelt-sommer.jpg" },
+  { label: "Süße Düfte",       type: "family",   value: "Honig & Gourmand",  image: "/duftwelt-suesse.jpg" },
+  { label: "Frische Düfte",    type: "family",   value: "Frisch & Zitrus",   image: "/duftwelt-frische.jpg" },
+  { label: "Oud & Leder",      type: "family",   value: "Leder",             image: "/duftwelt-oud-leder.jpg" },
+  { label: "Date Night Düfte", type: "occasion", value: "Date Night",        image: "/duftwelt-datenight.jpg" },
 ];
 
 const TICKER_ITEMS = [
