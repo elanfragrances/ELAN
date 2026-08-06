@@ -516,6 +516,46 @@ export default function ElanSite() {
   </div>
 </section>
 
+      {/* Kundenfeedback - direkt unter Hero */}
+<section id="stimmen" className="px-6 md:px-12 py-16 md:py-24 max-w-6xl mx-auto">
+  <div className="text-xs tracked uppercase mb-2 text-center" style={{ color: C.gold }}>Kundenfeedback</div>
+  <h2 className="font-display text-4xl md:text-5xl text-center mb-16">Das sagen unsere Kunden</h2>
+  
+  {/* CAROUSEL - GRÖSSER */}
+  <div className="overflow-x-auto pb-6" style={{ scrollBehavior: "smooth", WebkitOverflowScrolling: "touch" }}>
+    <div className="flex gap-8 md:gap-12 min-w-max px-6">
+      {TESTIMONIALS.map((t, i) => (
+        <div key={i} className="flex-shrink-0 w-80 md:w-96 text-center">
+          {/* KUNDENBILDER - GRÖSSER */}
+          <img
+            src={`/images/customer-${i + 1}.jpg`}
+            alt={t.name}
+            className="w-32 h-32 md:w-48 md:h-48 rounded-full mx-auto mb-6 object-cover border-4"
+            style={{ borderColor: C.gold }}
+          />
+
+          {/* STARS */}
+          <div className="flex justify-center mb-4">
+            {[...Array(t.rating)].map((_, j) => (
+              <Star key={j} size={20} fill={C.gold} stroke={C.gold} strokeWidth={1} />
+            ))}
+          </div>
+
+          {/* TEXT - GRÖSSER */}
+          <p className="text-base md:text-lg leading-relaxed mb-6" style={{ color: C.muted }}>
+            "{t.text}"
+          </p>
+
+          {/* NAME - GRÖSSER */}
+          <p className="font-medium text-base md:text-lg" style={{ color: C.ink }}>
+            {t.name}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+
       {/* Kategorie-Katalog */}
       <section className="px-6 md:px-12 pb-16 max-w-4xl mx-auto">
         <div className="text-xs tracked uppercase mb-2 text-center" style={{ color: C.gold }}>Entdecke</div>
