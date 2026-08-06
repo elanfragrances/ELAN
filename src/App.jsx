@@ -521,12 +521,30 @@ export default function ElanSite() {
   <div className="text-xs tracked uppercase mb-2 text-center" style={{ color: C.gold }}>Kundenfeedback</div>
   <h2 className="font-display text-4xl md:text-5xl text-center mb-16">Das sagen unsere Kunden</h2>
   
-  {/* CAROUSEL - GRÖSSER */}
-  <div className="overflow-x-auto pb-6" style={{ scrollBehavior: "smooth", WebkitOverflowScrolling: "touch" }}>
-    <div className="flex gap-8 md:gap-12 min-w-max px-6">
+  {/* CAROUSEL - AUTO SCROLL */}
+  <div 
+    className="overflow-hidden pb-6"
+    style={{ 
+      WebkitOverflowScrolling: "touch"
+    }}
+  >
+    <style>{`
+      @keyframes autoScroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      .carousel-track {
+        animation: autoScroll 30s linear infinite;
+      }
+      .carousel-track:hover {
+        animation-play-state: paused;
+      }
+    `}</style>
+    
+    <div className="carousel-track flex gap-8 md:gap-12 min-w-max px-6">
       {TESTIMONIALS.map((t, i) => (
         <div key={i} className="flex-shrink-0 w-80 md:w-96 text-center">
-          {/* KUNDENBILDER - GRÖSSER */}
+          {/* KUNDENBILDER */}
           <img
             src={`/images/customer-${i + 1}.jpg`}
             alt={t.name}
@@ -540,6 +558,44 @@ export default function ElanSite() {
               <Star key={j} size={20} fill={C.gold} stroke={C.gold} strokeWidth={1} />
             ))}
           </div>
+
+          {/* TEXT */}
+          <p className="text-base md:text-lg leading-relaxed mb-6" style={{ color: C.muted }}>
+            "{t.text}"
+          </p>
+
+          {/* NAME */}
+          <p className="font-medium text-base md:text-lg" style={{ color: C.ink }}>
+            {t.name}
+          </p>
+        </div>
+      ))}
+      {/* DUPLIZIEREN FÜR LOOP */}
+      {TESTIMONIALS.map((t, i) => (
+        <div key={`duplicate-${i}`} className="flex-shrink-0 w-80 md:w-96 text-center">
+          <img
+            src={`/images/customer-${i + 1}.jpg`}
+            alt={t.name}
+            className="w-32 h-32 md:w-48 md:h-48 rounded-full mx-auto mb-6 object-cover border-4"
+            style={{ borderColor: C.gold }}
+          />
+          <div className="flex justify-center mb-4">
+            {[...Array(t.rating)].map((_, j) => (
+              <Star key={j} size={20} fill={C.gold} stroke={C.gold} strokeWidth={1} />
+            ))}
+          </div>
+          <p className="text-base md:text-lg leading-relaxed mb-6" style={{ color: C.muted }}>
+            "{t.text}"
+          </p>
+          <p className="font-medium text-base md:text-lg" style={{ color: C.ink }}>
+            {t.name}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
 
           {/* TEXT - GRÖSSER */}
           <p className="text-base md:text-lg leading-relaxed mb-6" style={{ color: C.muted }}>
