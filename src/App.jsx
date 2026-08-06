@@ -597,6 +597,7 @@ export default function ElanSite() {
 </section>
 
 
+
           {/* TEXT - GRÖSSER */}
           <p className="text-base md:text-lg leading-relaxed mb-6" style={{ color: C.muted }}>
             "{t.text}"
