@@ -45,12 +45,12 @@ const HERO_IMAGE = "/images/hero.jpg";
 const IG_DM_URL = "https://ig.me/m/elan.fragrances";
 
 const CATEGORIES = [
-  { label: "Winter Düfte",     icon: Snowflake, type: "occasion", value: "Winter",           from: "#241809", to: "#4A3221" },
-  { label: "Sommer Düfte",     icon: Sun,       type: "occasion", value: "Sommer",            from: "#7A5A2A", to: "#B99048" },
-  { label: "Süße Düfte",       icon: Cookie,    type: "family",   value: "Honig & Gourmand",  from: "#5A3E27", to: "#9C7A3C" },
-  { label: "Frische Düfte",    icon: Wind,      type: "family",   value: "Frisch & Zitrus",   from: "#3A2712", to: "#8C7A61" },
-  { label: "Oud & Leder",      icon: Flame,     type: "family",   value: "Leder",             from: "#1C160D", to: "#4A3221" },
-  { label: "Date Night Düfte", icon: Heart,     type: "occasion", value: "Date Night",        from: "#3A2712", to: "#B4894B" },
+  { label: "Winter Düfte",     type: "occasion", value: "Winter",           image: "/images/duftwelt-winter.jpg" },
+  { label: "Sommer Düfte",     type: "occasion", value: "Sommer",            image: "/images/duftwelt-sommer.jpg" },
+  { label: "Süße Düfte",       type: "family",   value: "Honig & Gourmand",  image: "/images/duftwelt-suesse.jpg" },
+  { label: "Frische Düfte",    type: "family",   value: "Frisch & Zitrus",   image: "/images/duftwelt-frische.jpg" },
+  { label: "Oud & Leder",      type: "family",   value: "Leder",             image: "/images/duftwelt-oud-leder.jpg" },
+  { label: "Date Night Düfte", type: "occasion", value: "Date Night",        image: "/images/duftwelt-datenight.jpg" },
 ];
 
 const TICKER_ITEMS = [
