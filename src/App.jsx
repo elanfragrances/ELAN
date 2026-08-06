@@ -643,10 +643,7 @@ export default function ElanSite() {
         )}
       </section>
 
-{/* Kundenfeedback */}
-<section id="stimmen" className="px-6 md:px-12 py-20 max-w-6xl mx-auto" style={{ borderTop: `1px solid ${C.line}` }}>
-  <div className="text-xs tracked uppercase mb-2 text-center" style={{ color: C.gold }}>Kundenfeedback</div>
-  <h2 className="font-display text-4xl text-center mb-12">Das sagen unsere Kunden</h2>
+
   
   {/* CAROUSEL */}
   <div className="overflow-x-auto pb-6" style={{ scrollBehavior: "smooth", WebkitOverflowScrolling: "touch" }}>
