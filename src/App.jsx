@@ -41,7 +41,7 @@ const TESTIMONIALS = [
 const IG_URL = "https://instagram.com/elan.fragrances";
 // Leer lassen (null) = Flakon-Illustration wird gezeigt.
 // Pfad eintragen, z.B. "/images/hero.jpg" = dein eigenes Foto wird gezeigt.
-const HERO_IMAGE = "/images/hero.jpg";
+const HERO_IMAGES = ["/images/hero-1.jpg", "/images/hero-video.mp4", "/images/hero-3.jpg"];
 const IG_DM_URL = "https://ig.me/m/elan.fragrances";
 
 const CATEGORIES = [
