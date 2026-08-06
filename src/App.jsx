@@ -442,46 +442,79 @@ export default function ElanSite() {
       )}
 
       {/* Hero */}
-      <section id="top" className="relative flex flex-col items-center text-center px-6 pt-16 pb-12 md:pt-24 overflow-hidden">
-        <div className="mb-2 text-xs tracked uppercase" style={{ color: C.gold }}>Premium Duftzwillinge</div>
-   <div className="flex justify-center gap-4 w-full">
-  {HERO_IMAGES.map((src, i) => {
-    const isVideo = src.endsWith(".mp4");
-    const className = i === 1 ? "block" : "hidden md:block";
-    const style = { width: "100%", maxWidth: 340, aspectRatio: "4/5", objectFit: "cover" };
-    return isVideo ? (
-<video
-  autoPlay
-  muted
-  loop
-  playsInline
-  className="w-full rounded-lg object-cover h-80 md:h-[580px]"
-  style={{ background: "#000" }}
-  onCanPlayThrough={(e) => e.currentTarget.play().catch(() => {})}
->
-  <source src="/images/hero-video.mp4" type="video/mp4" />
-  Dein Browser unterstützt Videos nicht.
-</video>
+<section id="top" className="relative px-6 md:px-12 pt-16 pb-12 md:pt-24 overflow-hidden">
+  <div className="max-w-7xl mx-auto">
+    
+    {/* DESKTOP: 3 Spalten (Links Bild | Mitte Video | Rechts Bild) */}
+    <div className="hidden md:grid grid-cols-3 gap-6 mb-12">
+      {/* LINKS: Bild */}
+      <img
+        src="/images/hero-1.jpg"
+        alt="ÉLAN 1"
+        className="w-full rounded-lg object-cover hover:scale-105 transition-transform duration-300"
+        style={{ height: 580 }}
+      />
+      
+      {/* MITTE: Video */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="w-full rounded-lg object-cover"
+        style={{ height: 580, background: "#000" }}
+        onCanPlayThrough={(e) => e.currentTarget.play().catch(() => {})}
+      >
+        <source src="/images/hero-video.mp4" type="video/mp4" />
+      </video>
+      
+      {/* RECHTS: Bild */}
+      <img
+        src="/images/hero-2.jpg"
+        alt="ÉLAN 2"
+        className="w-full rounded-lg object-cover hover:scale-105 transition-transform duration-300"
+        style={{ height: 580 }}
+      />
+    </div>
 
+    {/* MOBILE: Nur Video */}
+    <div className="md:hidden mb-8">
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="w-full rounded-lg object-cover h-80"
+        style={{ background: "#000" }}
+        onCanPlayThrough={(e) => e.currentTarget.play().catch(() => {})}
+      >
+        <source src="/images/hero-video.mp4" type="video/mp4" />
+      </video>
+    </div>
 
-    ) : (
-      <img key={src} src={src} alt="ÉLAN Kollektion" className={className} style={style} />
-    );
-  })}
-</div>
-        <h1 className="font-display mt-8 text-5xl md:text-7xl" style={{ lineHeight: 1.05 }}>Ikonische Düfte.<br />Neu interpretiert.</h1>
-        <p className="mt-6 max-w-md text-sm md:text-base" style={{ color: C.muted }}>
-          Extrait de Parfum mit 30% Ölanteil. Komponiert aus erlesenen Rohstoffen aus Frankreich &amp; England.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-3 mt-9">
-          <button onClick={() => scrollTo("shop")} className="btn-gold px-8 py-3 text-sm tracked uppercase inline-flex items-center justify-center gap-2">
-            Kollektion entdecken <ChevronRight size={15} />
-          </button>
-          <button onClick={() => { setQuizOpen(true); setQuizResult(null); }} className="px-8 py-3 text-sm tracked uppercase inline-flex items-center justify-center gap-2 btn-ghost" style={{ border: `1px solid ${C.gold}`, color: C.ink, background: "none" }}>
-            <Wand2 size={15} /> Duft-Quiz
-          </button>
-        </div>
-      </section>
+    {/* TEXT - BEIDE (MOBILE + DESKTOP) */}
+    <div className="text-center">
+      <div className="mb-4 text-xs tracked uppercase" style={{ color: C.gold }}>Premium Duftzwillinge</div>
+      
+      <h1 className="font-display text-4xl md:text-6xl mb-4 md:mb-6" style={{ lineHeight: 1.05, color: C.ink }}>
+        Ikonische Düfte.<br />Neu interpretiert.
+      </h1>
+      
+      <p className="text-xs md:text-sm mb-6 md:mb-9 max-w-2xl mx-auto" style={{ color: C.muted }}>
+        Extrait de Parfum mit 30% Ölanteil. Komponiert aus erlesenen Rohstoffen aus Frankreich &amp; England.
+      </p>
+      
+      <div className="flex flex-col sm:flex-row gap-3 justify-center">
+        <button onClick={() => scrollTo("shop")} className="btn-gold px-8 py-3 text-sm tracked uppercase inline-flex items-center justify-center gap-2">
+          Kollektion entdecken <ChevronRight size={15} />
+        </button>
+        <button onClick={() => { setQuizOpen(true); setQuizResult(null); }} className="px-8 py-3 text-sm tracked uppercase inline-flex items-center justify-center gap-2 btn-ghost" style={{ border: `1px solid ${C.gold}`, color: C.ink, background: "none" }}>
+          <Wand2 size={15} /> Duft-Quiz
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Kategorie-Katalog */}
       <section className="px-6 md:px-12 pb-16 max-w-4xl mx-auto">
