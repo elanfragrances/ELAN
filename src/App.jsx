@@ -493,9 +493,6 @@ export default function ElanSite() {
 
 {/* Hero */}
 <section id="top" className="relative px-6 md:px-12 pt-16 pb-12 md:pt-24 overflow-hidden">
-
-      {/* Hero */}
-<section id="top" className="relative px-6 md:px-12 pt-16 pb-12 md:pt-24 overflow-hidden">
   <div className="max-w-7xl mx-auto">
     
     {/* DESKTOP: 3 Spalten (Links Bild | Mitte Video | Rechts Bild) */}
