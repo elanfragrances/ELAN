@@ -525,13 +525,14 @@ export default function ElanSite() {
   <h2 className="font-display text-4xl md:text-5xl text-center mb-16">Das sagen unsere Kunden</h2>
   
   {/* CAROUSEL - AUTO SCROLL */}
-  <div 
-    className="overflow-hidden pb-6"
+<div 
+    className="overflow-hidden pb-6 carousel-mask"
     style={{ 
       WebkitOverflowScrolling: "touch"
     }}
   >
-    <style>{`
+   <style>{`
+   
       @keyframes autoScroll {
         0% { transform: translateX(0); }
         100% { transform: translateX(-50%); }
@@ -539,8 +540,9 @@ export default function ElanSite() {
       .carousel-track {
         animation: autoScroll 30s linear infinite;
       }
-      .carousel-track:hover {
-        animation-play-state: paused;
+      .carousel-mask {
+        -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+        mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
       }
     `}</style>
     
