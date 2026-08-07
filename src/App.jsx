@@ -972,6 +972,15 @@ const [headerHidden, setHeaderHidden] = useState(false);
           {toast}
         </div>
       )}
+
+      {discountOpen && (
+        <DiscountPopup
+          onClose={() => setDiscountOpen(false)}
+          onDiscover={() => { setDiscountOpen(false); scrollTo("shop"); }}
+        />
+      )}
+
+      {!discountOpen && <DiscountBadge onClick={() => setDiscountOpen(true)} />}
     </div>
   );
 }
