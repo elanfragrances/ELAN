@@ -472,23 +472,7 @@ export default function ElanSite() {
   `}</style>
 
   <div
-    className="rabatt-banner"
-    style={{
-      background: C.gold,
-      color: C.bg,
-      borderColor: C.ink
-    }}
-  >
-    <p style={{ margin: 0, fontSize: "14px", fontWeight: "600", letterSpacing: "0.15em", textTransform: "uppercase" }}>
-      🎁 Neukunden
-    </p>
-    <h3 style={{ margin: "10px 0 5px 0", fontSize: "32px", fontWeight: "300", letterSpacing: "0.05em" }}>
-      30% Rabatt
-    </h3>
-    <p style={{ margin: 0, fontSize: "16px", fontWeight: "300", letterSpacing: "0.05em" }}>
-      auf deine erste Bestellung
-    </p>
-  </div>
+
 </div>
 
 {/* Hero */}
