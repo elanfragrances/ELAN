@@ -54,8 +54,9 @@ const CATEGORIES = [
 ];
 
 const TICKER_ITEMS = [
+  "WILLKOMMEN BEI ÉLAN — 30% NEUKUNDENRABATT MIT CODE WELCOME30",
   "VERSAND IN 2–4 WERKTAGEN",
-  "AB 3 FLASCHEN GRATIS VERSAND + 10% RABATT",
+  "AB 3 FLASCHEN GRATIS VERSAND",
   "SICHER BEZAHLEN: PAYPAL ODER ÜBERWEISUNG",
   "EXTRAIT DE PARFUM · 30% ÖLANTEIL",
 ];
@@ -277,7 +278,8 @@ export default function ElanSite() {
   const [search, setSearch] = useState("");
   const [visibleCount, setVisibleCount] = useState(20);
   const [form, setForm] = useState({ name: "", address: "", plz: "", ort: "", land: "Deutschland" });
-  const [headerHidden, setHeaderHidden] = useState(false);
+const [headerHidden, setHeaderHidden] = useState(false);
+  const [discountOpen, setDiscountOpen] = useState(false);
   const lastY = useRef(0);
 
   useEffect(() => {
@@ -289,8 +291,17 @@ export default function ElanSite() {
       else if (y < lastY.current - 4 || y < 80) setHeaderHidden(false);
       lastY.current = y;
     };
-    window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const seen = localStorage.getItem("elan_welcome_seen");
+    if (!seen) {
+      const t = setTimeout(() => setDiscountOpen(true), 900);
+      localStorage.setItem("elan_welcome_seen", "1");
+      return () => clearTimeout(t);
+    }
   }, []);
 
   const scrollTo = (id) => {
@@ -321,9 +332,8 @@ export default function ElanSite() {
 
   const total = useMemo(() => cartItems.reduce((s, i) => s + i.unitPrice * i.qty, 0), [cartItems]);
   const count = useMemo(() => cartItems.reduce((s, i) => s + i.qty, 0), [cartItems]);
-  const discount = count >= 3 ? total * 0.10 : 0;
-  const shipping = count === 0 ? 0 : count >= 3 ? 0 : 6.2;
-  const grandTotal = total - discount + shipping;
+  const shipping = count === 0 ? 0 : count >= 5 ? 0 : 6.2;
+  const grandTotal = total + shipping;
   const bestsellers = useMemo(() => PRODUCTS.filter((p) => p.bestseller), []);
 
   const filtered = PRODUCTS.filter(
@@ -345,7 +355,7 @@ export default function ElanSite() {
   const sendToInstagram = () => {
     if (cartItems.length === 0 || !formValid) return;
     const lines = cartItems.map((i) => `• ÉLAN ${i.code} (${i.size}ml) — ${i.qty}x (${fmt(i.unitPrice * i.qty)})`).join("\n");
-    const text = `Hallo ÉLAN! Ich möchte gerne bestellen:\n\n${lines}\n\nZwischensumme: ${fmt(total)}${discount > 0 ? `\nRabatt (-10%): -${fmt(discount)}` : ""}\nVersand: ${shipping === 0 ? "kostenlos" : fmt(shipping)}\nGesamt: ${fmt(grandTotal)}\n\nName: ${form.name}\nAdresse: ${form.address}\nPLZ / Ort: ${form.plz} ${form.ort}\nLand: ${form.land}\n\nZahlung: PayPal / Überweisung (nach Absprache)`;
+    const text = `Hallo ÉLAN! Ich möchte gerne bestellen:\n\n${lines}\n\nZwischensumme: ${fmt(total)}\nVersand: ${shipping === 0 ? "kostenlos" : fmt(shipping)}\nGesamt: ${fmt(grandTotal)}\n\nName: ${form.name}\nAdresse: ${form.address}\nPLZ / Ort: ${form.plz} ${form.ort}\nLand: ${form.land}\n\nZahlung: PayPal / Überweisung (nach Absprache)`;
     navigator.clipboard?.writeText(text).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 5000);
@@ -673,7 +683,7 @@ export default function ElanSite() {
       {/* floating trust cards */}
       <section className="px-6 md:px-12 pb-16 max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6">
         <FloatCard icon={<Truck size={20} />} title="Versand in 2–4 Werktagen" sub="Schneller, diskreter Versand" />
-        <FloatCard icon={<Gift size={20} />} title="Ab 3 Flaschen Gratis Versand + 10% Rabatt" sub="Automatischer Mengenrabatt" />
+       <FloatCard icon={<Gift size={20} />} title="Ab 5 Flaschen Gratis Versand" sub="Automatisch im Warenkorb berechnet" />
         <FloatCard icon={<ShieldCheck size={20} />} title="Sicher bezahlen" sub="PayPal oder Banküberweisung" />
       </section>
 
