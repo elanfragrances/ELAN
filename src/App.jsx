@@ -621,14 +621,6 @@ export default function ElanSite() {
         </div>
       </section>
 
-      {/* quick testimonial strip */}
-      <section className="quote-strip px-6 md:px-12 pb-10 max-w-5xl mx-auto">
-        {TESTIMONIALS.slice(0, 3).map((t, i) => (
-          <div key={i} className="flex items-center gap-2 shrink-0 text-xs" style={{ color: C.muted }}>
-            <Stars n={5} size={12} /> <span>„{t.text.split(".")[0]}." — {t.name}</span>
-          </div>
-        ))}
-      </section>
 
       {/* floating trust cards */}
       <section className="px-6 md:px-12 pb-16 max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6">
