@@ -229,7 +229,7 @@ function Quiz({ onResult, onClose }) {
     { key: "occasion", q: "Für welchen Anlass?", opts: OCCASIONS },
     { key: "family", q: "Welche Richtung mag er/sie am liebsten?", opts: FAMILIES },
   ];
-  const pick = (key, val) => {
+const pick = (key, val) => {
     const next = { ...ans, [key]: val };
     setAns(next);
     if (step < steps.length - 1) { setStep(step + 1); return; }
@@ -237,9 +237,12 @@ function Quiz({ onResult, onClose }) {
       p,
       score: (p.gender === next.gender || next.gender === "Unisex" || p.gender === "Unisex" ? 1 : 0) +
              (p.occasion === next.occasion ? 1 : 0) + (p.family === next.family ? 1 : 0),
-    })).sort((a, b) => b.score - a.score || (b.p.bestseller ? 1 : 0) - (a.p.bestseller ? 1 : 0));
-    onResult(scored[0].p);
-  };
+    }));
+    const maxScore = Math.max(...scored.map((s) => s.score));
+    const bestMatches = scored.filter((s) => s.score === maxScore);
+    const randomPick = bestMatches[Math.floor(Math.random() * bestMatches.length)];
+    onResult(randomPick.p);
+  };;
   const s = steps[step];
   return (
     <div className="p-8">
@@ -725,40 +728,7 @@ export default function ElanSite() {
 
 
   
-  {/* CAROUSEL */}
-  <div className="overflow-x-auto pb-6" style={{ scrollBehavior: "smooth", WebkitOverflowScrolling: "touch" }}>
-    <div className="flex gap-8 min-w-max px-6">
-      {TESTIMONIALS.map((t, i) => (
-        <div key={i} className="flex-shrink-0 w-72 text-center">
-          {/* KUNDENBILDER */}
-          <img
-            src={`/images/customer-${i + 1}.jpg`}
-            alt={t.name}
-            className="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4"
-            style={{ borderColor: C.gold }}
-          />
 
-          {/* STARS */}
-          <div className="flex justify-center mb-3">
-            {[...Array(t.rating)].map((_, j) => (
-              <Star key={j} size={16} fill={C.gold} stroke={C.gold} strokeWidth={1} />
-            ))}
-          </div>
-
-          {/* TEXT */}
-          <p className="text-sm leading-relaxed mb-4" style={{ color: C.muted }}>
-            "{t.text}"
-          </p>
-
-          {/* NAME */}
-          <p className="font-medium text-sm" style={{ color: C.ink }}>
-            {t.name}
-          </p>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
 
 
       {/* FAQ */}
