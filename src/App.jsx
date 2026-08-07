@@ -789,8 +789,8 @@ const [headerHidden, setHeaderHidden] = useState(false);
         <h3 className="font-display text-3xl mb-4">Wie funktioniert die Bestellung?</h3>
         <p className="text-sm" style={{ color: C.muted }}>
           Wähle Duft &amp; Größe, öffne den Warenkorb, trage deine Adresse ein und sende die Bestellung
-          per Instagram-DM. Bezahlt wird per PayPal oder Überweisung. Versand in 2–4 Werktagen — ab 3
-          Flaschen Gratis Versand + 10% Rabatt.
+          per Instagram-DM. Bezahlt wird per PayPal oder Überweisung. Versand in 2–4 Werktagen — ab 5
+          Flaschen Gratis Versand.
         </p>
       </section>
 
