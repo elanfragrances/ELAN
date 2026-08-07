@@ -264,6 +264,76 @@ const pick = (key, val) => {
   );
 }
 
+function DiscountPopup({ onClose, onDiscover }) {
+  return (
+    <div
+      className="fixed inset-0 z-[70] flex items-center justify-center p-4"
+      style={{ background: "#241809AA" }}
+      onClick={onClose}
+    >
+      <div
+        className="w-full max-w-md relative"
+        style={{ background: C.bg, border: `1px solid ${C.line}` }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          onClick={onClose}
+          aria-label="Schließen"
+          className="absolute top-3 right-3 btn-ghost z-10"
+          style={{ background: "none", border: "none", color: C.text }}
+        >
+          <X size={20} />
+        </button>
+
+        <div
+          className="w-full flex items-center justify-center"
+          style={{ height: 200, background: "linear-gradient(160deg,#8a7250,#3a2e1f)", color: "#ffffff99", fontSize: 12, letterSpacing: "0.08em" }}
+        >
+          Bild-Platzhalter
+        </div>
+
+        <div className="p-8 text-center">
+          <div className="text-xs tracked uppercase mb-3" style={{ color: C.gold }}>Für Neukunden</div>
+          <div className="font-display text-4xl mb-2">30% Rabatt</div>
+          <p className="text-sm mb-5" style={{ color: C.muted }}>
+            Sichere dir 30% auf deine erste Bestellung.<br />
+            Der Rabatt wird automatisch an der Kasse abgezogen.
+          </p>
+          <div
+            className="flex items-center justify-between px-4 py-3 mb-6"
+            style={{ border: `1px solid ${C.gold}` }}
+          >
+            <span className="text-sm font-medium tracked" style={{ color: C.ink }}>WELCOME30</span>
+            <span className="text-[10px] uppercase" style={{ color: C.gold }}>Automatisch im Warenkorb</span>
+          </div>
+          <button
+            onClick={onDiscover}
+            className="btn-gold w-full py-3 text-xs tracked uppercase flex items-center justify-center gap-2"
+          >
+            Kollektion entdecken <ChevronRight size={14} />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function DiscountBadge({ onClick }) {
+  return (
+    <button
+      onClick={onClick}
+      className="fixed z-[60] flex items-center gap-2 px-4 py-2.5 btn-ghost"
+      style={{
+        right: 24, bottom: 24,
+        background: C.ink, color: C.goldHi,
+        border: `1px solid ${C.gold}`, borderRadius: 999,
+        fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase",
+      }}
+    >
+      <Gift size={13} /> −30%
+    </button>
+  );
+}
 export default function ElanSite() {
   const [cart, setCart] = useState({}); // key: `${id}_${size}` -> qty
   const [cartOpen, setCartOpen] = useState(false);
