@@ -443,37 +443,7 @@ export default function ElanSite() {
           </div>
         </div>
       )}
-{/* 30% RABATT BANNER */}
-<div
-  style={{
-    position: "relative",
-    textAlign: "center",
-    padding: "20px 0",
-    marginBottom: "30px"
-  }}
->
-  <style>{`
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.7; }
-    }
-    .rabatt-banner {
-      animation: float 3s ease-in-out infinite, blink 2s ease-in-out infinite;
-      border: 3px solid;
-      border-radius: 20px;
-      padding: 25px 40px;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-  `}</style>
 
-  <div
-
-</div>
 
 {/* Hero */}
 <section id="top" className="relative px-6 md:px-12 pt-16 pb-12 md:pt-24 overflow-hidden">
