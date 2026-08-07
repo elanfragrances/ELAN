@@ -866,8 +866,7 @@ const [headerHidden, setHeaderHidden] = useState(false);
                   </div>
                 )}
                 <div className="flex justify-between text-sm mb-1" style={{ color: C.muted }}><span>Versand</span><span>{shipping === 0 ? "kostenlos" : fmt(shipping)}</span></div>
-                {count > 0 && count < 3 && <div className="text-[11px] mb-3" style={{ color: C.gold }}>Noch {3 - count} Flasche(n) für Gratis Versand + 10% Rabatt!</div>}
-                <div className="flex justify-between font-display text-2xl mb-5"><span>Gesamt</span><span style={{ color: C.gold }}>{fmt(grandTotal)}</span></div>
+{count > 0 && count < 5 && <div className="text-[11px] mb-3" style={{ color: C.gold }}>Noch {5 - count} Flasche(n) für Gratis Versand!</div>}                <div className="flex justify-between font-display text-2xl mb-5"><span>Gesamt</span><span style={{ color: C.gold }}>{fmt(grandTotal)}</span></div>
 
                 <div className="text-xs tracked uppercase mb-3" style={{ color: C.gold }}>Lieferadresse</div>
                 <div className="flex flex-col gap-2 mb-5">
