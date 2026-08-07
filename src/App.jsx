@@ -596,23 +596,6 @@ export default function ElanSite() {
   </div>
 </section>
 
-
-
-          {/* TEXT - GRÖSSER */}
-          <p className="text-base md:text-lg leading-relaxed mb-6" style={{ color: C.muted }}>
-            "{t.text}"
-          </p>
-
-          {/* NAME - GRÖSSER */}
-          <p className="font-medium text-base md:text-lg" style={{ color: C.ink }}>
-            {t.name}
-          </p>
-        </div>
-      ))}
-    </div>
-  </div>
-
-
       {/* Kategorie-Katalog */}
       <section className="px-6 md:px-12 pb-16 max-w-4xl mx-auto">
         <div className="text-xs tracked uppercase mb-2 text-center" style={{ color: C.gold }}>Entdecke</div>
