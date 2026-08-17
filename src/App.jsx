@@ -528,8 +528,7 @@ export default function ElanSite() {
               }}
             >
               {/* Hier später: <img src="/images/popup-bild.jpg" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} /> */}
-              [Bild: 30% Rabatt Teaser]
-            </div>
+<img src="/images/popup-rabatt.jpg" alt="30% Rabatt" style={{ width: "100%", height: "100%", objectFit: "cover" }} />            </div>
 
             {/* Content */}
             <div style={{ padding: "30px 30px 35px" }}>
