@@ -1130,8 +1130,8 @@ export default function ElanSite() {
         </div>
       )}
 
-      {{/* POPUP - NEUKUNDEN 30% RABATT */}
-{showPopup && (
+      {/* POPUP - NEUKUNDEN 30% RABATT */}
+      {showPopup && ({showPopup && (
   <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "#241809AA" }} onClick={() => setShowPopup(false)}>
     <div className="w-full" style={{ maxWidth: "340px", background: C.bg, border: `1px solid ${C.line}`, borderRadius: "20px", overflow: "hidden" }} onClick={(e) => e.stopPropagation()}>
       
