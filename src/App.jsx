@@ -262,7 +262,6 @@ export default function ElanSite() {
   const [quizOpen, setQuizOpen] = useState(false);
   const [quizResult, setQuizResult] = useState(null);
   const [showPopup, setShowPopup] = useState(true); // NEU: Popup beim ersten Laden
-  const [showPopup, setShowPopup] = useState(true); // NEU: Popup beim ersten Laden
   const [genderF, setGenderF] = useState("Alle");
   const [familyF, setFamilyF] = useState("Alle");
   const [occasionF, setOccasionF] = useState("Alle");
@@ -776,7 +775,7 @@ export default function ElanSite() {
         <div className="max-w-md mx-auto mb-6">
           <input
             className="el-input w-full px-4 py-2.5 text-sm"
-            placeholder="Duft suchen (z. B. „Aventus", „Leder", „No. 012") …"
+            placeholder="Duft suchen (z. B. Aventus, Leder, No. 012) ..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
