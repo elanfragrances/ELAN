@@ -942,26 +942,34 @@ export default function ElanSite() {
       )}
       {/* Floating Badge - 30% Rabatt rechts unten */}
       <div
+        onClick={() => {
+          navigator.clipboard?.writeText("ELANONTOP30").then(() => {
+            setToast("✓ Code kopiert: ELANONTOP30 — Erwähne ihn bei deiner Instagram-Bestellung!");
+            setTimeout(() => setToast(null), 4000);
+          }).catch(() => setToast("Code: ELANONTOP30"));
+        }}
         style={{
           position: "fixed",
-          bottom: "30px",
-          right: "30px",
+          bottom: "20px",
+          right: "0px",
           zIndex: 45,
-          width: "80px",
-          height: "80px",
-          borderRadius: "50%",
+          width: "60px",
+          height: "60px",
+          borderRadius: "50% 0 0 50%",
           background: C.gold,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          boxShadow: "0 8px 24px rgba(0,0,0,0.2)",
-          cursor: "pointer"
+          boxShadow: "-2px 4px 12px rgba(0,0,0,0.2)",
+          cursor: "pointer",
+          transition: "transform 0.2s ease"
         }}
-        onClick={() => scrollTo("top")}
+        onMouseOver={(e) => e.currentTarget.style.transform = "scale(1.1)"}
+        onMouseOut={(e) => e.currentTarget.style.transform = "scale(1)"}
       >
-        <div style={{ fontSize: "28px", fontWeight: "600", color: C.ink }}>30%</div>
-<div style={{ fontSize: "10px", color: C.ink, letterSpacing: "0.05em" }}>RABATT</div>      </div>
-    </div>
+        <div style={{ fontSize: "20px", fontWeight: "600", color: C.ink }}>30%</div>
+        <div style={{ fontSize: "8px", color: C.ink, letterSpacing: "0.05em", marginTop: "2px" }}>CODE</div>
+      </div>
   );
 }
