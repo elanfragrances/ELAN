@@ -1131,74 +1131,69 @@ export default function ElanSite() {
       )}
 
       {/* POPUP - NEUKUNDEN 30% RABATT */}
-      {showPopup && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "#241809AA" }} onClick={() => setShowPopup(false)}>
-<div className="w-full max-w-lg" style={{ background: C.bg, border: `1px solid ${C.line}`, borderRadius: "20px", overflow: "hidden" }} onClick={(e) => e.stopPropagation()}>            {/* Schließen-Button */}
-            <button
-              onClick={() => setShowPopup(false)}
-              aria-label="Schließen"
-              style={{ position: "absolute", top: "12px", right: "16px", background: "none", border: "none", fontSize: "22px", cursor: "pointer", color: C.ink, zIndex: 10 }}
-            >
-              ×
-            </button>
+{showPopup && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "#241809AA" }} onClick={() => setShowPopup(false)}>
+    <div className="w-full" style={{ maxWidth: "340px", background: C.bg, border: `1px solid ${C.line}`, borderRadius: "20px", overflow: "hidden" }} onClick={(e) => e.stopPropagation()}>
+      
+      {/* Schließen-Button - OBEN */}
+      <div style={{ display: "flex", justifyContent: "flex-end", padding: "12px 16px" }}>
+        <button
+          onClick={() => setShowPopup(false)}
+          aria-label="Schließen"
+          style={{ background: "none", border: "none", fontSize: "24px", cursor: "pointer", color: C.ink }}
+        >
+          ×
+        </button>
+      </div>
 
-            {/* Platz für Bild */}
-            <div
-              style={{
-                width: "100%",
-                height: "220px",
-                background: C.gold,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: C.muted,
-                fontSize: "14px",
-              }}
-            >
-              {/* Hier später: <img src="/images/popup-bild.jpg" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} /> */}
-              [Bild: 30% Rabatt Teaser]
-            </div>
+      {/* Bild */}
+      <div style={{ width: "100%", height: "220px", background: C.gold, display: "flex", alignItems: "center", justifyContent: "center", color: C.muted, fontSize: "14px" }}>
+        <img src="/images/popup-rabatt.jpg" alt="30% Rabatt" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+      </div>
 
-            {/* Content */}
-            <div style={{ padding: "30px 30px 35px" }}>
-              <p style={{ margin: 0, fontSize: "14px", fontWeight: "600", letterSpacing: "0.15em", textTransform: "uppercase", color: C.gold }}>
-                🎁 Neukunden
-              </p>
-              <h3 style={{ margin: "10px 0 5px 0", fontSize: "32px", fontWeight: "300", letterSpacing: "0.05em", color: C.ink }}>
-                30% Rabatt
-              </h3>
-              <p style={{ margin: "0 0 25px 0", fontSize: "16px", fontWeight: "300", letterSpacing: "0.05em", color: C.muted }}>
-                auf deine erste Bestellung
-              </p>
+      {/* Text */}
+      <div style={{ padding: "30px 30px 35px" }}>
+        <p style={{ margin: 0, fontSize: "14px", fontWeight: "600", letterSpacing: "0.15em", textTransform: "uppercase", color: C.gold }}>
+          NEUKUNDEN
+        </p>
+        <h3 style={{ margin: "10px 0 5px 0, fontSize: "32px", fontWeight: "300", letterSpacing: "0.05em", color: C.ink }}>
+          30% Rabatt
+        </h3>
+        <p style={{ margin: "0 0 25px 0", fontSize: "16px", fontWeight: "300", letterSpacing: "0.05em", color: C.muted }}>
+          auf deine erste Bestellung
+        </p>
 
-              {/* Button: Kollektion entdecken */}
-              <button
-                onClick={() => {
-                  setShowPopup(false);
-                  scrollTo("shop");
-                }}
-                style={{
-                  background: C.ink,
-                  color: C.goldHi,
-                  border: "none",
-                  borderRadius: "30px",
-                  padding: "14px 30px",
-                  fontSize: "14px",
-                  fontWeight: "600",
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  cursor: "pointer",
-                  width: "100%",
-                }}
-                onMouseOver={(e) => e.target.style.background = C.inkHi}
-                onMouseOut={(e) => e.target.style.background = C.ink}
-              >
-                Kollektion entdecken
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+        {/* NEU: Code kopieren Button */}
+        <button
+          onClick={() => {
+            navigator.clipboard?.writeText("ELANONTOP30").then(() => {
+              setToast("✓ Code kopiert: ELANONTOP30 — Jetzt einkaufen und 30% sparen!");
+              setTimeout(() => setToast(null), 4000);
+              setTimeout(() => setShowPopup(false), 1500);
+            }).catch(() => setToast("Code: ELANONTOP30"));
+          }}
+          style={{
+            background: C.ink,
+            color: C.goldHi,
+            border: "none",
+            borderRadius: "30px",
+            padding: "14px 30px",
+            fontSize: "14px",
+            fontWeight: "600",
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+            cursor: "pointer",
+            width: "100%",
+          }}
+          onMouseOver={(e) => e.target.style.background = C.inkHi}
+          onMouseOut={(e) => e.target.style.background = C.ink}
+        >
+          Code kopieren
+        </button>
+      </div>
+    </div>
+  </div>
+)}
 
       {/* POPUP - NEUKUNDEN 30% RABATT */}
       {showPopup && (
