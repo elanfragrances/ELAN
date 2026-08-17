@@ -971,5 +971,6 @@ export default function ElanSite() {
         <div style={{ fontSize: "20px", fontWeight: "600", color: C.ink }}>30%</div>
         <div style={{ fontSize: "8px", color: C.ink, letterSpacing: "0.05em", marginTop: "2px" }}>CODE</div>
       </div>
+      </div>
   );
 }
