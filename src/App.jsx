@@ -1156,8 +1156,7 @@ export default function ElanSite() {
         <p style={{ margin: 0, fontSize: "14px", fontWeight: "600", letterSpacing: "0.15em", textTransform: "uppercase", color: C.gold }}>
           NEUKUNDEN
         </p>
-        <h3 style={{ margin: "10px 0 5px 0, fontSize: "32px", fontWeight: "300", letterSpacing: "0.05em", color: C.ink }}>
-          30% Rabatt
+<h3 style={{ margin: "10px 0 5px 0", fontSize: "32px", fontWeight: "300", letterSpacing: "0.05em", color: C.ink }}>          30% Rabatt
         </h3>
         <p style={{ margin: "0 0 25px 0", fontSize: "16px", fontWeight: "300", letterSpacing: "0.05em", color: C.muted }}>
           auf deine erste Bestellung
