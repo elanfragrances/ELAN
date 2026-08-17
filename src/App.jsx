@@ -722,10 +722,11 @@ export default function ElanSite() {
       </section>
 
       {/* TRUST CARDS */}
-      <section className="px-6 md:px-12 pb-16 max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6">
-        <FloatCard icon={<Truck size={20} />} title="Versand in 2–4 Werktagen" sub="Schneller, diskreter Versand" />
-        <FloatCard icon={<Gift size={20} />} title="Ab 3 Flaschen: 10% Rabatt | Ab 5: Gratis Versand" sub="Automatische Anrechnung" />
-        <FloatCard icon={<ShieldCheck size={20} />} title="Sicher bezahlen" sub="PayPal oder Banküberweisung" />
+    <section className="px-6 md:px-12 pb-16 max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-4 gap-6">
+  <FloatCard icon={<Truck size={20} />} title="Versand in 2–4 Werktagen" sub="Schneller, diskreter Versand" />
+  <FloatCard icon={<Gift size={20} />} title="Ab 3 Flaschen: 10% Rabatt | Ab 5: Gratis Versand" sub="Automatische Anrechnung" />
+  <FloatCard icon={<ShieldCheck size={20} />} title="Sicher bezahlen" sub="PayPal oder Banküberweisung" />
+  <FloatCard icon={<Percent size={20} />} title="30% Rabatt" sub="Für Neukunden auf die erste Bestellung" />
       </section>
 
       {/* TRUST BAR */}
