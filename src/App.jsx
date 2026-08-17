@@ -1130,7 +1130,7 @@ export default function ElanSite() {
         </div>
       )}
 
-      {/* POPUP - NEUKUNDEN 30% RABATT */}
+      {{/* POPUP - NEUKUNDEN 30% RABATT */}
 {showPopup && (
   <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "#241809AA" }} onClick={() => setShowPopup(false)}>
     <div className="w-full" style={{ maxWidth: "340px", background: C.bg, border: `1px solid ${C.line}`, borderRadius: "20px", overflow: "hidden" }} onClick={(e) => e.stopPropagation()}>
@@ -1151,18 +1151,19 @@ export default function ElanSite() {
         <img src="/images/popup-rabatt.jpg" alt="30% Rabatt" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
       </div>
 
-      {/* Text */}
+      {/* Content */}
       <div style={{ padding: "30px 30px 35px" }}>
         <p style={{ margin: 0, fontSize: "14px", fontWeight: "600", letterSpacing: "0.15em", textTransform: "uppercase", color: C.gold }}>
           NEUKUNDEN
         </p>
-<h3 style={{ margin: "10px 0 5px 0", fontSize: "32px", fontWeight: "300", letterSpacing: "0.05em", color: C.ink }}>          30% Rabatt
+        <h3 style={{ margin: "10px 0 5px 0", fontSize: "32px", fontWeight: "300", letterSpacing: "0.05em", color: C.ink }}>
+          30% Rabatt
         </h3>
         <p style={{ margin: "0 0 25px 0", fontSize: "16px", fontWeight: "300", letterSpacing: "0.05em", color: C.muted }}>
           auf deine erste Bestellung
         </p>
 
-        {/* NEU: Code kopieren Button */}
+        {/* Code kopieren Button */}
         <button
           onClick={() => {
             navigator.clipboard?.writeText("ELANONTOP30").then(() => {
@@ -1193,52 +1194,6 @@ export default function ElanSite() {
     </div>
   </div>
 )}
-
-
-            >
-              {/* Hier später: <img src="/images/popup-bild.jpg" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} /> */}
-<img src="/images/popup-rabatt.jpg" alt="30% Rabatt" style={{ width: "100%", height: "100%", objectFit: "cover" }} />            </div>
-
-            {/* Content */}
-            <div style={{ padding: "30px 30px 35px" }}>
-              <p style={{ margin: 0, fontSize: "14px", fontWeight: "600", letterSpacing: "0.15em", textTransform: "uppercase", color: C.gold }}>
-                 NEUKUNDEN
-              </p>
-              <h3 style={{ margin: "10px 0 5px 0", fontSize: "32px", fontWeight: "300", letterSpacing: "0.05em", color: C.ink }}>
-                30% Rabatt
-              </h3>
-              <p style={{ margin: "0 0 25px 0", fontSize: "16px", fontWeight: "300", letterSpacing: "0.05em", color: C.muted }}>
-                auf deine erste Bestellung
-              </p>
-
-              {/* Button: Kollektion entdecken */}
-              <button
-                onClick={() => {
-                  setShowPopup(false);
-                  scrollTo("shop");
-                }}
-                style={{
-                  background: C.ink,
-                  color: C.goldHi,
-                  border: "none",
-                  borderRadius: "30px",
-                  padding: "14px 30px",
-                  fontSize: "14px",
-                  fontWeight: "600",
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  cursor: "pointer",
-                  width: "100%",
-                }}
-                onMouseOver={(e) => e.target.style.background = C.inkHi}
-                onMouseOut={(e) => e.target.style.background = C.ink}
-              >
-                Kollektion entdecken
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* HERO SECTION */}
       <section id="top" className="relative px-6 md:px-12 pt-16 pb-12 md:pt-24 overflow-hidden">
