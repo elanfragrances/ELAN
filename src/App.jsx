@@ -534,7 +534,7 @@ export default function ElanSite() {
             {/* Content */}
             <div style={{ padding: "30px 30px 35px" }}>
               <p style={{ margin: 0, fontSize: "14px", fontWeight: "600", letterSpacing: "0.15em", textTransform: "uppercase", color: C.gold }}>
-                🎁 Neukunden
+                 NEUKUNDEN
               </p>
               <h3 style={{ margin: "10px 0 5px 0", fontSize: "32px", fontWeight: "300", letterSpacing: "0.05em", color: C.ink }}>
                 30% Rabatt
