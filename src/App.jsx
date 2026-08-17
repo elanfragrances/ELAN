@@ -933,6 +933,29 @@ export default function ElanSite() {
 
       {/* Toast */}
       {toast && (
+      {/* Floating Badge - 30% Rabatt rechts unten */}
+<div
+  style={{
+    position: "fixed",
+    bottom: "30px",
+    right: "30px",
+    zIndex: 45,
+    width: "80px",
+    height: "80px",
+    borderRadius: "50%",
+    background: C.gold,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    boxShadow: "0 8px 24px rgba(0,0,0,0.2)",
+    cursor: "pointer"
+  }}
+  onClick={() => scrollTo("top")}
+>
+  <div style={{ fontSize: "28px", fontWeight: "600", color: C.ink }}>30%</div>
+  <div style={{ fontSize: "10px", color: C.ink, letterSpacing: "0.05em" }}>RABATT</div>
+</div>
         <div
           className="fixed bottom-6 left-1/2 z-[60] px-5 py-3 text-xs tracked uppercase"
           style={{ transform: "translateX(-50%)", background: C.ink, color: C.goldHi, boxShadow: "0 10px 30px -10px rgba(36,24,9,0.5)" }}
