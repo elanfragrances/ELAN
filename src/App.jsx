@@ -1133,8 +1133,7 @@ export default function ElanSite() {
       {/* POPUP - NEUKUNDEN 30% RABATT */}
       {showPopup && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "#241809AA" }} onClick={() => setShowPopup(false)}>
-          <div className="w-full max-w-md" style={{ background: C.bg, border: `1px solid ${C.line}`, borderRadius: "20px", overflow: "hidden" }} onClick={(e) => e.stopPropagation()}>
-            {/* Schließen-Button */}
+<div className="w-full max-w-lg" style={{ background: C.bg, border: `1px solid ${C.line}`, borderRadius: "20px", overflow: "hidden" }} onClick={(e) => e.stopPropagation()}>            {/* Schließen-Button */}
             <button
               onClick={() => setShowPopup(false)}
               aria-label="Schließen"
