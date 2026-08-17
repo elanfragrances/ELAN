@@ -1194,31 +1194,7 @@ export default function ElanSite() {
   </div>
 )}
 
-      {/* POPUP - NEUKUNDEN 30% RABATT */}
-      {showPopup && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "#241809AA" }} onClick={() => setShowPopup(false)}>
-          <div className="w-full max-w-md" style={{ background: C.bg, border: `1px solid ${C.line}`, borderRadius: "20px", overflow: "hidden" }} onClick={(e) => e.stopPropagation()}>
-            {/* Schließen-Button */}
-            <button
-              onClick={() => setShowPopup(false)}
-              aria-label="Schließen"
-              style={{ position: "absolute", top: "12px", right: "16px", background: "none", border: "none", fontSize: "22px", cursor: "pointer", color: C.ink, zIndex: 10 }}
-            >
-              ×
-            </button>
 
-            {/* Platz für Bild */}
-            <div
-              style={{
-                width: "100%",
-                height: "220px",
-                background: C.gold,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: C.muted,
-                fontSize: "14px",
-              }}
             >
               {/* Hier später: <img src="/images/popup-bild.jpg" alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} /> */}
 <img src="/images/popup-rabatt.jpg" alt="30% Rabatt" style={{ width: "100%", height: "100%", objectFit: "cover" }} />            </div>
