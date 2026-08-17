@@ -961,8 +961,7 @@ export default function ElanSite() {
         onClick={() => scrollTo("top")}
       >
         <div style={{ fontSize: "28px", fontWeight: "600", color: C.ink }}>30%</div>
-        <div style={{ fontSize: "10px", color: C.ink", letterSpacing: "0.05em" }}>RABATT</div>
-      </div>
+<div style={{ fontSize: "10px", color: C.ink, letterSpacing: "0.05em" }}>RABATT</div>      </div>
     </div>
   );
 }
